@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAGE NOE GØTT</title>
+    <style>
+    .classus {
+        text-align: center;
+        text-size-adjust: 50px;
+    }
+
+    #SPIN {
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+
+    #SPIN img {
+        display: block;
+        margin: 0 auto;
+        transform-origin: center center;
+        animation: spin 5s linear infinite;
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to   { transform: rotate(360deg); }
+    }
+
+    </style>
+
+</head>
+
+
+<script>
+    const img = document.querySelector("#SPIN img");
+    let spinning = true;
+
+    img.addEventListener("click", () => {
+        if (spinning) {
+            img.style.animationPlayState = "paused";
+        } else {
+            img.style.animationPlayState = "running";
+        }
+        spinning = !spinning;
+    });
+</script>
+
+<body>
+    <div style="background-color: lightblue;">
+        <div>
+            <h1 class="classus">Hallo jeg heter marquee stabeek</h1>
+        </div>
+        <div id="SPIN">
+            <img src="IMG_2296.jpg" width="600" height="600" alt="Spinnende bilde">
+        </div>
+        <div>
+            <h1 class="classus">Og jeg er entreprenør fra francekrige</h1>
+        </div>
+    </div>
+</body>
+</html>
