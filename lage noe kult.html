@@ -34,19 +34,7 @@
 </head>
 
 
-<script>
-    const img = document.querySelector("#SPIN img");
-    let spinning = true;
 
-    img.addEventListener("click", () => {
-        if (spinning) {
-            img.style.animationPlayState = "paused";
-        } else {
-            img.style.animationPlayState = "running";
-        }
-        spinning = !spinning;
-    });
-</script>
 
 <body>
     <div style="background-color: lightblue;">
@@ -60,5 +48,37 @@
             <h1 class="classus">Og jeg er entreprenør fra francekrige</h1>
         </div>
     </div>
+
+
+    <div style="background-color: lightpink;">
+        <div>
+            <h1 class="classus">Dette er en annen seksjon <br> Med bare js kode</h1>
+            <input style="margin: 0 auto;"type="text" id="textInput" placeholder="dette er en placeholder">
+            <br>
+            <button style="margin: 0 auto;" type="button" id="myButton">Trykk her</button>
+            <div>
+                <p id="apeinfo"></p>
+            </div>
+
+
+
+        </div>
+    </div>
+
+<script>
+    document.getElementById("myButton").onclick = function () {
+        const inputValue = document.getElementById("textInput").value;
+        document.getElementById("apeinfo").textContent = "Du skrev: " + inputValue;
+    };
+
+    const img = document.querySelector("#SPIN img");
+    let spinning = true;
+
+    img.addEventListener("click", () => {
+        img.style.animationPlayState = spinning ? "paused" : "running";
+        spinning = !spinning;
+    });
+</script>
+
 </body>
 </html>
