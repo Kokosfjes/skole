@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="background-color: lightpink;">
+        <div>
+            <h1 class="classus">Dette er en annen seksjon <br> Med bare js kode</h1>
+            <input style="margin: 0 auto;"type="text" id="textInput" placeholder="Hvor gammel er du?">
+            <br>
+            <button style="margin: 0 auto;" type="button" id="myButton">Trykk her</button>
+            <div>
+                <p id="apeinfo"></p>
+                <p id="ageInfo"></p>
+            </div>
+
+
+
+        </div>
+    </div>
+    
+
+    <script>
+    document.getElementById("myButton").onclick = function () {
+        const inputValue = document.getElementById("textInput").value;
+        if (inputValue < 18) {
+            document.getElementById("apeinfo").textContent = "Du er mindreårig";
+            document.getElementById("ageinfo").textContent = "det er " + (18 - inputValue) + " år igjen til du er myndig";
+        } else if (inputValue >= 18) {
+            document.getElementById("apeinfo").textContent = "du er myndig";
+        };
+    }
+    </script>
+
+</body>
+</html>
