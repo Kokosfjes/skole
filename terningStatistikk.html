@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+<style>
+    body {
+        background-color: skyblue;
+    }
+    span.graf {
+        background-color: red;
+        height: 20px;
+        display: inline-block;
+        margin-left: 10px;
+    }
+</style>
+</head>
+
+<body>
+    <div>
+        <div>
+            <input style="margin: 0 auto;" type="text" id="textInput" placeholder="dette er en placeholder">
+            <br>
+            <button style="margin: 0 auto;" type="button" id="myButton">Trykk her</button>
+        </div>
+
+        <div id="utskrift"></div>
+
+        <div>
+            <p id="gjennomsnitt"></p>
+        </div>
+    </div>
+
+<script>
+window.onload = oppstart;
+
+function oppstart() {
+    document.getElementById("myButton").onclick = function () {
+
+        var antallKast = parseInt(document.getElementById("textInput").value); 
+        // 🔧 ENDRET: lagt til var (unngår global variabel)
+
+        document.getElementById("utskrift").innerHTML = "";
+        knapp(antallKast); 
+        // 🔧 ENDRET: sender antallKast inn som parameter
+    }
+}
+
+function knapp(antallKast) { 
+    // 🔧 ENDRET: tar imot antallKast som parameter
+
+    var opptelling = [0,0,0,0,0,0];
+
+    for (var i = 0; i < antallKast; i++) {
+        var oeyne = Math.floor(Math.random() * 6) + 1;
+        opptelling[oeyne - 1]++;
+    }
+
+    for (var j = 0; j < opptelling.length; j++) {
+        var nyttElement = document.createElement("p");
+        nyttElement.innerHTML = "antall " + (j + 1) +"'ere: " + opptelling[j];
+    
+        var nyGraf = document.createElement("span");
+        nyGraf.className = "graf";
+        nyGraf.style.width = opptelling[j] + "px";
+        nyttElement.appendChild(nyGraf);
+
+        document.getElementById("utskrift").appendChild(nyttElement);
+    }
+
+    /* =========================
+       GJENNOMSNITT (Riktig logikk)
+       ========================= */
+
+    var sum = 0; 
+    // 🔧 ENDRET: ny variabel for totalsum
+
+    for (var i = 0; i < opptelling.length; i++) {
+        sum += opptelling[i] * (i + 1);
+        // 🔧 ENDRET: antall * verdi på terningen
+    }
+
+    var gjennomsnitt = sum / antallKast; 
+    // 🔧 ENDRET: korrekt formel
+
+    console.log("Gjennomsnitt:", gjennomsnitt);
+
+    document.getElementById("gjennomsnitt").innerHTML =
+        "Gjennomsnitt: " + gjennomsnitt.toFixed(2);
+        // 🔧 ENDRET: skriver ut på siden
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>2ITK – Prøve</title>
+
+  <!-- CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .boks {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: white;
+      border: 2px solid #ccc;
+      width: 320px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Registrering av tall</h1>
+  <p>Skriv inn et tall og trykk på knappen</p>
+
+  <input type="number" id="tallInput">
+  <button id="registrerBtn">Registrer</button>
+
+  <div class="boks">
+    <p id="melding"></p>
+    <p id="statistikk"></p>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Variabler som brukes flere ganger (gjenbruk)
+    let sum = 0;
+    let antall = 0;
+
+    const knapp = document.getElementById("registrerBtn");
+    const input = document.getElementById("tallInput");
+    const melding = document.getElementById("melding");
+    const statistikk = document.getElementById("statistikk");
+
+    // Hendelse: når brukeren klikker på knappen
+    knapp.addEventListener("click", function () {
+
+      // Henter verdi fra input
+      let tall = Number(input.value);
+
+      // IF-test: sjekker om brukeren har skrevet inn et tall
+      if (isNaN(tall) || input.value === "") {
+        melding.innerHTML = "Du må skrive inn et gyldig tall!";
+        return;
+      }
+
+      // Akkumulering
+      sum += tall;
+      antall++;
+
+      // Tilbakemelding basert på verdi
+      if (tall > 0) {
+        melding.innerHTML = "Du skrev inn et positivt tall.";
+      } else if (tall < 0) {
+        melding.innerHTML = "Du skrev inn et negativt tall.";
+      } else {
+        melding.innerHTML = "Du skrev inn tallet 0.";
+      }
+
+      // Regner ut gjennomsnitt
+      let gjennomsnitt = sum / antall;
+
+      // Viser statistikk til bruker
+      statistikk.innerHTML =
+        "Antall tall: " + antall + "<br>" +
+        "Sum: " + sum + "<br>" +
+        "Gjennomsnitt: " + gjennomsnitt.toFixed(2);
+
+      // Tømmer input-feltet
+      input.value = "";
+    });
+  </script>
+
+</body>
+</html>
