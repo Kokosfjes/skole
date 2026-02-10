@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript-oppgaver i1–id</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; }
+    section { border-bottom: 1px solid #ccc; padding: 20px 0; }
+    button { margin: 5px 0; }
+    code { background: #f4f4f4; padding: 2px 4px; }
+  </style>
+</head>
+<body>
+
+<h1>Samling av JavaScript-oppgaver (i1 – id)</h1>
+<p>Åpne Console (F12) for å se utskrifter.</p>
+
+<!-- i1 -->
+<section>
+<h2>i1 – Hello world (språkvalg)</h2>
+<p>Programmet gir en hilsen basert på valgt språk.</p>
+<button onclick="i1()">Kjør i1</button>
+</section>
+
+<!-- i2 -->
+<section>
+<h2>i2 – Alder</h2>
+<p>Sjekker om bruker er myndig og gir ekstra tilbakemelding.</p>
+<button onclick="i2()">Kjør i2</button>
+</section>
+
+<!-- i3 -->
+<section>
+<h2>i3 – Medlemskap i klubb</h2>
+<p>Sjekker om alder er innenfor fastsatte grenser.</p>
+<button onclick="i3()">Kjør i3</button>
+</section>
+
+<!-- i4 -->
+<section>
+<h2>i4 – Navn ønsket antall ganger</h2>
+<p>Skriver ut navn flere ganger på ulike måter.</p>
+<button onclick="i4()">Kjør i4</button>
+</section>
+
+<!-- i5 -->
+<section>
+<h2>i5 – Terningkast (antall)</h2>
+<p>Kaster terning et valgt antall ganger og regner snitt.</p>
+<button onclick="i5()">Kjør i5</button>
+</section>
+
+<!-- i6 -->
+<section>
+<h2>i6 – Terningkast inntil 1</h2>
+<p>Kaster terning til den viser 1.</p>
+<button onclick="i6()">Kjør i6</button>
+</section>
+
+<!-- i7 -->
+<section>
+<h2>i7 – To tall</h2>
+<p>Beregner sum, differanse, produkt, kvotient.</p>
+<button onclick="i7()">Kjør i7</button>
+</section>
+
+<!-- i8 -->
+<section>
+<h2>i8 – Verdibytte</h2>
+<p>Bytter verdier mellom to variabler.</p>
+<button onclick="i8()">Kjør i8</button>
+</section>
+
+<!-- i9 -->
+<section>
+<h2>i9 – Fibonacci</h2>
+<p>Skriver Fibonacci-tall.</p>
+<button onclick="i9()">Kjør i9</button>
+</section>
+
+<!-- ia -->
+<section>
+<h2>ia – Overtroisk telling</h2>
+<p>Teller opp uten tallet 13.</p>
+<button onclick="ia()">Kjør ia</button>
+</section>
+
+<!-- ib -->
+<section>
+<h2>ib – Talltull (arrays)</h2>
+<p>Ulike operasjoner på en array.</p>
+<button onclick="ib()">Kjør ib</button>
+</section>
+
+<!-- ic -->
+<section>
+<h2>ic – Aksjehandel (beste dager)</h2>
+<p>Finner beste kjøps- og salgsdag.</p>
+<button onclick="ic()">Kjør ic</button>
+</section>
+
+<!-- id -->
+<section>
+<h2>id – Gjett hemmelig tall</h2>
+<p>Gjett et tilfeldig tall mellom 1 og 100.</p>
+<button onclick="id()">Kjør id</button>
+</section>
+
+<script>
+// i1
+function i1() {
+  let språk = prompt("Velg språk: no / en / es");
+  if (språk === "no") console.log("Hei verden");
+  else if (språk === "en") console.log("Hello world");
+  else if (språk === "es") console.log("Hola mundo");
+  else console.log("Ukjent språk");
+}
+
+// i2
+function i2() {
+  let alder = Number(prompt("Hvor gammel er du?"));
+  if (alder >= 18) {
+    console.log("Du er myndig");
+    if (alder > 67) console.log("Trolig pensjonist");
+    else if (alder > 50) console.log("Godt voksen");
+  } else {
+    console.log("Ikke myndig. År igjen: " + (18 - alder));
+  }
+}
+
+// i3
+function i3() {
+  let nedre = 13, ovre = 19;
+  let alder = Number(prompt("Oppgi alder"));
+  if (alder < nedre) console.log("For ung. Vent " + (nedre - alder) + " år");
+  else if (alder > ovre) console.log("For gammel. " + (alder - ovre) + " år for sent");
+  else console.log("Du kan bli medlem!");
+}
+
+// i4
+function i4() {
+  let navn = prompt("Navn:");
+  let antall = Number(prompt("Antall:"));
+  let liste = [];
+  for (let i = 0; i < antall; i++) liste.push(navn);
+
+  console.log(liste.join("\n"));
+  console.log(liste.join(", "));
+  if (liste.length > 1) {
+    let siste = liste.pop();
+    console.log(liste.join(", ") + " og " + siste + ".");
+  }
+}
+
+// i5
+function i5() {
+  let n = Number(prompt("Antall kast:"));
+  let kast = [];
+  let sum = 0;
+  for (let i = 0; i < n; i++) {
+    let k = Math.floor(Math.random() * 6 + 1);
+    kast.push(k);
+    sum += k;
+  }
+  console.log(kast.join(", "));
+  console.log("Gjennomsnitt:", (sum / n).toFixed(1));
+}
+
+// i6
+function i6() {
+  let kast, antall = 0, sum = 0, liste = [];
+  do {
+    kast = Math.floor(Math.random() * 6 + 1);
+    liste.push(kast);
+    antall++;
+    if (kast !== 1) sum += kast;
+  } while (kast !== 1);
+
+  console.log("Kast:", liste.join(", "));
+  console.log("Antall før 1:", antall - 1);
+  console.log("Sum før 1:", sum);
+}
+
+// i7
+function i7() {
+  let a = Number(prompt("Tall 1"));
+  let b = Number(prompt("Tall 2"));
+  console.log("Sum:", a + b);
+  console.log("Differanse:", Math.abs(a - b));
+  console.log("Produkt:", a * b);
+  console.log("Kvotient:", a / b);
+  console.log("Like:", a === b);
+}
+
+// i8
+function i8() {
+  let a = 5, b = 10;
+  console.log(a + " og " + b);
+  let temp = a;
+  a = b;
+  b = temp;
+  console.log(a + " og " + b);
+}
+
+// i9
+function i9() {
+  let n = Number(prompt("Antall Fibonacci-tall:"));
+  let fib = [0, 1];
+  while (fib.length < n) {
+    fib.push(fib[fib.length - 1] + fib[fib.length - 2]);
+  }
+  console.log(fib.join(", "));
+}
+
+// ia
+function ia() {
+  let n = Number(prompt("Tell til:"));
+  let res = [];
+  for (let i = 1; i <= n; i++) {
+    if (i !== 13) res.push(i);
+  }
+  console.log(res.join(" "));
+}
+
+// ib
+function ib() {
+  let tallTab = [3, 7, 12, 25, 4];
+  console.log(tallTab);
+  console.log("Lengde:", tallTab.length);
+  console.log("Første:", tallTab[0], "Siste:", tallTab[tallTab.length - 1]);
+  console.log(tallTab.join("-"));
+  console.log("Over 10:", tallTab.filter(t => t > 10).length);
+  console.log("Sum:", tallTab.reduce((a, b) => a + b, 0));
+  let ny = Number(prompt("Nytt tall:"));
+  tallTab.push(ny);
+  console.log(tallTab);
+}
+
+// ic
+function besteDager(arr) {
+  let minPris = arr[0], kjøp = 0, salg = 0, maks = 0;
+  for (let i = 1; i < arr.length; i++) {
+    let gevinst = arr[i] - minPris;
+    if (gevinst > maks) {
+      maks = gevinst;
+      salg = i;
+    }
+    if (arr[i] < minPris) {
+      minPris = arr[i];
+      kjøp = i;
+    }
+  }
+  return [kjøp, salg];
+}
+
+function ic() {
+  let data = [17, 11, 60, 25, 150, 75, 31, 120];
+  console.log("Beste dager:", besteDager(data));
+}
+
+// id
+function id() {
+  let hemmelig = Math.floor(Math.random() * 100 + 1);
+  let forsøk = 0;
+  let gjett;
+  do {
+    gjett = Number(prompt("Gjett tallet (1–100)"));
+    forsøk++;
+    if (gjett < hemmelig) alert("For lavt");
+    else if (gjett > hemmelig) alert("For høyt");
+  } while (gjett !== hemmelig);
+  alert("Riktig! Forsøk: " + forsøk);
+}
+</script>
+
+</body>
+</html>
